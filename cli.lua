@@ -1,12 +1,12 @@
-bot = dofile('/home/username/inline/utils.lua')
-json = dofile('/home/username/inline/JSON.lua')
+bot = dofile('/home/inline/inline/utils.lua')
+json = dofile('/home/inline/inline/JSON.lua')
 URL = require "socket.url"
 serpent = require("serpent")
 http = require "socket.http"
 https = require "ssl.https"
 redis = require('redis')
 db = redis.connect('127.0.0.1', 6379)
-BASE = '/home/username/inline/'
+BASE = '/home/inline/inline/'
 SUDO = 30410709 --sudo id
 sudo_users = {30410709,123456789,Userid}
 BOTS = 00000000 --bot id
