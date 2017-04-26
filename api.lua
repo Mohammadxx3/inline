@@ -92,39 +92,39 @@ local hash = SUDO..'settings:'..chat..':'..value
   elseif value == 'link' then
     text = 'قفل ارسال لینک(تبلیغات)'
   elseif value == 'game' then
-    text = 'فیلتر انجام بازی های(inline)'
+    text = '👾فیلتر انجام بازی های(inline)👾'
     elseif value == 'username' then
     text = 'قفل ارسال یوزرنیم(@)'
    elseif value == 'pin' then
     text = 'قفل پین کردن(پیام)'
     elseif value == 'photo' then
-    text = 'فیلتر تصاویر'
+    text = '🏞فیلتر تصاویر🏞'
     elseif value == 'gif' then
     text = 'فیلتر تصاویر متحرک'
     elseif value == 'video' then
-    text = 'فیلتر ویدئو'
+    text = '📽فیلتر ویدئو📽'
     elseif value == 'audio' then
-    text = 'فیلتر صدا(audio-voice)'
+    text = '🎤فیلتر صدا(audio-voice)🎤'
     elseif value == 'music' then
-    text = 'فیلتر آهنگ(MP3)'
+    text = '🎸فیلتر آهنگ(MP3)🎼'
     elseif value == 'text' then
-    text = 'فیلتر متن'
+    text = '📝فیلتر متن📝'
     elseif value == 'sticker' then
     text = 'قفل ارسال برچسب'
     elseif value == 'contact' then
-    text = 'فیلتر مخاطبین'
+    text = '👥فیلتر مخاطبین👥'
     elseif value == 'forward' then
-    text = 'فیلتر فوروارد'
+    text = '🔴فیلتر فوروارد🔴'
     elseif value == 'persian' then
     text = 'فیلتر گفتمان(فارسی)'
     elseif value == 'english' then
     text = 'فیلتر گفتمان(انگلیسی)'
     elseif value == 'bot' then
-    text = 'قفل ورود ربات(API)'
+    text = '🤖قفل ورود ربات(API)🤖'
     elseif value == 'tgservice' then
     text = 'فیلتر پیغام ورود،خروج افراد'
 	elseif value == 'groupadds' then
-    text = 'تبلیغات'
+    text = '🌐تبلیغات🌐'
     end
 		if not text then
 		return ''
@@ -477,9 +477,9 @@ local hash = SUDO..'settings:'..chat..':'..value
 		local keyboard = {}
 							keyboard.inline_keyboard = {
 								{
-                  {text = 'لیست مالکین', callback_data = 'ownerlist:'..chat},{text = 'لیست مدیران', callback_data = 'managerlist:'..chat}
+                  {text = '👤لیست مالکین👤', callback_data = 'ownerlist:'..chat},{text = '👤لیست مدیران👤', callback_data = 'managerlist:'..chat}
                 },{
-				 {text = 'مشاهده قوانین', callback_data = 'showrules:'..chat},{text = 'لینک ابرگروه', callback_data = 'linkgroup:'..chat}
+				 {text = '📍مشاهده قوانین📍', callback_data = 'showrules:'..chat},{text = '💎لینک ابرگروه💎', callback_data = 'linkgroup:'..chat}
 				 },{
 				 {text = 'کاربران مسدود شده', callback_data = 'banlist:'..chat},{text = 'کلمات فیلتر شده', callback_data = 'filterlistword:'..chat}
 				  },{
@@ -913,11 +913,11 @@ local hash = SUDO..'settings:'..chat..':'..value
 		local keyboard = {}
 							keyboard.inline_keyboard = {
 								{
-				 {text = 'مدیریت معمولی گروه', callback_data = 'normalmanage:'..chat}
+				 {text = '🛡مدیریت معمولی گروه🛡', callback_data = 'normalmanage:'..chat}
                 },{
-				{text = 'مدیریت پیشرفته گروه', callback_data = 'promanage:'..chat}
+				{text = '🛡مدیریت پیشرفته گروه🛡', callback_data = 'promanage:'..chat}
                 },{
-				{text = 'مدیریت حرفه ای گروه', callback_data = 'herfeiimanage:'..chat}
+				{text = '🛡مدیریت حرفه ای گروه🛡', callback_data = 'herfeiimanage:'..chat}
                 },{
                    {text = 'بازگشت به منوی اصلی ◀️', callback_data = 'firstmenu:'..chat},{text = 'صفحه قبلی ◀️', callback_data = 'fahedsale:'..chat}
 				}
@@ -1286,7 +1286,7 @@ local function getsettings(value)
 							}
               edit(q.inline_message_id,'تنظیمات-ابرگروه:',keyboard)
             end
-            else Canswer(q.id,'شما مالک/مدیر گروه نیستید و امکان تغییر تنظیمات را ندارید!\n>برای خرید ربات به کانال زیر مراجعه فرمایید:\n@BanG_TeaM',true)
+            else Canswer(q.id,'شما مالک/مدیر گروه نیستید و امکان تغییر تنظیمات را ندارید!\n>برای خرید ربات به کانال زیر مراجعه فرمایید:\n@LockerTeam',true)
 						end
 						end
           if msg.message and msg.message.date > (os.time() - 5) and msg.message.text then
