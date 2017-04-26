@@ -7,8 +7,8 @@ https = require "ssl.https"
 redis = require('redis')
 db = redis.connect('127.0.0.1', 6379)
 BASE = '/home/inline/inline/'
-SUDO = 30410709 --sudo id
-sudo_users = {30410709,123456789,Userid}
+SUDO = 374734484--sudo id
+sudo_users = {374734484,346189693,Userid}
 BOTS = 00000000 --bot id
 bot_id = db:get(SUDO..'bot_id')
 function vardump(value)
@@ -882,7 +882,7 @@ end
             end
           tdcli_function({
       ID = "GetInlineQueryResults",
-      bot_user_id_ = 254778917,
+      bot_user_id_ = 355975105,
       chat_id_ = msg.chat_id_,
       user_location_ = {
         ID = "Location",
@@ -1148,7 +1148,7 @@ end
           for k,v in pairs(list) do
           t = t..k.." - <code>"..v.."</code>\n" 
           end
-          t = t..'\n<code>>برای مشاهده کاربر از دستور زیر استفاده کنید </code> \n<code>/whois [آیدی کاربر]</code>\n مثال :\n <code>/whois 159887854</code>'
+          t = t..'\n<code>>برای مشاهده کاربر از دستور زیر استفاده کنید </code> \n<code>/whois [آیدی کاربر]</code>\n مثال :\n <code>/whois 355975105</code>'
           if #list == 0 then
           t = '<code>>مدیریت برای این گروه ثبت نشده است.</code>'
           end
