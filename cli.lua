@@ -45,6 +45,18 @@ function is_bot(msg)
     return false
     end
   end
+ ------------------------------------------------------------
+function sphoto(arg ,msgr)
+local count = msgr.total_count_
+if count < 1 then
+return td.sendText(tonumber(msg.to.id), 0, 1, 0, nil, arg:gsub('_', '\\%0'), 0, 'md', ok_cb, cmd)
+end
+local min = msgr.photos_
+local random_table = min[(math.random(count) - 1)]
+local pic_id = random_table.sizes_[0].photo_.persistent_id_
+td.sendPhoto(tonumber(msg.to.id), 0, 1, 1, nil, pic_id, arg:gsub('`', ''):gsub('%*', ''):gsub('\\' , ''), dl_cb, arg)
+
+end
   ------------------------------------------------------------
 function is_owner(msg) 
   local hash = db:sismember(SUDO..'owners:'..msg.chat_id_,msg.sender_user_id_)
@@ -1212,9 +1224,10 @@ end
         bot.resolve_username(username,id_by_username)
         end
           if text == 'id' then
-            if tonumber(msg.reply_to_message_id_) == 0 then
-        bot.sendMessage(msg.chat_id_, msg.id_, 1, '<code>شناسه-گروه</code>: {<b>'..msg.chat_id_..'</b>}', 1, 'html')
-          end
+            if tonumber(msg.reply_id, all_by_reply, msg) == 0 then
+         bot.sendMessage(msg.chat_id_, msg.id_, 1, '<code>شناسه-گروه</code>: {<b>'..msg.chat_id_..'</b>}', 1, 'html')
+	 bot.sendMessage(msg.from.id, msg.to.id, 1, '<code>آیدی شما:</code>: {<b>'..msg.to.id..'</b>}', 1, 'html')
+end
             end
 			if text == 'pin' then
         local id = msg.id_
@@ -1275,9 +1288,17 @@ end
       end
     if text and msg_type == 'text' and not is_muted(msg.chat_id_,msg.sender_user_id_) then
        if text == "me" then
-         local msgs = db:get(SUDO..'total:messages:'..msg.chat_id_..':'..msg.sender_user_id_)
-         bot.sendMessage(msg.chat_id_, msg.id_, 1, '<code>شناسه:</code> [<b>'..msg.sender_user_id_..'</b>]\n<code>تعداد پیام ها:</code> [<b>'..msgs..'</b>]', 1, 'html')
-      end
+         username = get_uname(msg.from.id) or false
+local hash = 'msgs:'..msg.from.id..':'..msg.to.id
+msgs = tonumber(redis:get(hash)) or 0
+groupmsg = tonumber(redis:get('spgs:'..msg.to.id)) or 0
+local msger = tonumber(((msgs / groupmsg) * 100))
+local msger = math.ceil(msger)
+local rank = function();local data = load_data(_config.chats.managed[msg.to.peer_id]);
+if data.rank and data.rank[uid] then return '\n*rank :* `'..data.rank[uid]..'`' else return '' end end
+local text = _('▪️user info : \n*user :* %s\n*▪️your msgs in group :* `[%s]%s%s`\n*▪️All group msgs :* `%s`'):format(username,math.ceil(msgs),'%',msger,groupmsg)..rank()
+return get_pics(msg.from.id,sphoto,text)
+end
 end
 end
   
