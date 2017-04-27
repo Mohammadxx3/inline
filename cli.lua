@@ -714,14 +714,14 @@ end
 	  ---############################################--
 	   if text == 'reload' and is_sudo(msg) then
        dofile('bot.lua') 
- bot.sendMessage(msg.chat_id_, msg.id_, 1,'<code>>تغییرات مورد نظر شما اعمال شد.</code>', 1, 'html')
+ bot.sendMessage(msg.chat_id_, msg.id_, 1,'<code>>🛡تغییرات مورد نظر شما اعمال شد.🛡</code>', 1, 'html')
             end
 	    if text == 'statsbot' and is_sudo(msg) then
     local gps = db:scard("botgp")
 	local users = db:scard("usersbot")
     local allmgs = db:get("allmsg")
 
-					bot.sendMessage(msg.chat_id_, msg.id_, 1, '>آمار ربات:\n\n`> سوپرگروه ها:` [*'..gps..'*]\n`> کاربران:` [*'..users..'*]\n`> کل پیام های دریافتی:` [*'..allmgs..'*]', 1, 'md')
+					bot.sendMessage(msg.chat_id_, msg.id_, 1, '▪️آمار ربات:\n\n`سوپرگروه ها▪️:` [*'..gps..'*]\n`▪️ کاربران:` [*'..users..'*]\n`▪️ کل پیام های دریافتی:` [*'..allmgs..'*]', 1, 'md')
 	end
 	  --###########################################--
       -- owner
@@ -750,16 +750,16 @@ end
             end
         if text == 'welcome enable' then
           db:set(SUDO..'status:welcome:'..msg.chat_id_,'enable')
-          bot.sendMessage(msg.chat_id_, msg.id_, 1,'<code>>ارسال پیام خوش آمدگویی فعال گردید.</code>', 1, 'html')
+          bot.sendMessage(msg.chat_id_, msg.id_, 1,'<code>>✔️ارسال پیام خوش آمدگویی فعال گردید.</code>', 1, 'html')
           end
         if text == 'welcome disable' then
           db:set(SUDO..'status:welcome:'..msg.chat_id_,'disable')
-          bot.sendMessage(msg.chat_id_, msg.id_, 1,'<code>>ارسال پیام خوش آمدگویی غیرفعال گردید.</code>', 1, 'html')
+          bot.sendMessage(msg.chat_id_, msg.id_, 1,'<code>>✔️ارسال پیام خوش آمدگویی غیرفعال گردید.</code>', 1, 'html')
           end
         if text and text:match('^setwelcome (.*)') then
           local welcome = text:match('^setwelcome (.*)')
           db:set(SUDO..'welcome:'..msg.chat_id_,welcome)
-          local t = '<code>>پیغام خوش آمدگویی با موفقیت ذخیره و تغییر یافت.</code>\n<code>>متن پیام خوش آمدگویی تنظیم شده:</code>:\n{<code>'..welcome..'</code>}'
+          local t = '<code>>✔️پیغام خوش آمدگویی با موفقیت ذخیره و تغییر یافت.</code>\n<code>>متن پیام خوش آمدگویی تنظیم شده:</code>:\n{<code>'..welcome..'</code>}'
           bot.sendMessage(msg.chat_id_, msg.id_, 1,t, 1, 'html')
           end
         if text == 'delete welcome' then
@@ -768,7 +768,7 @@ end
           end
         if text == 'owners' or text == 'ownerlist' then
           local list = db:smembers(SUDO..'owners:'..msg.chat_id_)
-          local t = '<code>>لیست مالکین گروه:</code> \n\n'
+          local t = '<code>>لیست مالکین گروه▪️:</code> \n\n'
           for k,v in pairs(list) do
           t = t..k.." - <code>"..v.."</code>\n" 
           end
@@ -894,7 +894,7 @@ end
             end
           tdcli_function({
       ID = "GetInlineQueryResults",
-      bot_user_id_ =307078761,
+      bot_user_id_ = 307078761,
       chat_id_ = msg.chat_id_,
       user_location_ = {
         ID = "Location",
@@ -934,7 +934,7 @@ end
         if text == 'link' then
           local link = db:get(SUDO..'grouplink'..msg.chat_id_) 
           if link then
-        bot.sendMessage(msg.chat_id_, msg.id_, 1, '<code>>لینک گروه به گروه:</code> \n'..link, 1, 'html')
+        bot.sendMessage(msg.chat_id_, msg.id_, 1, '<code>▪️لینک ورود به گروه:</code> \n'..link, 1, 'html')
             else
         bot.sendMessage(msg.chat_id_, msg.id_, 1, '<code>>لینک ورود به گروه تنظیم نشده است.</code>\n<code>ثبت لینک جدید با دستور</code>\n<b>/setlink</b> <i>link</i>\n<code>امکان پذیر است.</code>', 1, 'html')
             end
@@ -1136,7 +1136,7 @@ end
       if text and text:match('^del (%d+)$') then
         local limit = tonumber(text:match('^del (%d+)$'))
         if limit > 100 then
-         bot.sendMessage(msg.chat_id_, msg.id_, 1, 'تعداد پیام وارد شده از حد مجاز (100 پیام) بیشتر است !', 1, 'html')
+         bot.sendMessage(msg.chat_id_, msg.id_, 1, 'تعداد پیام وارد شده از حد مجاز (100 پیام) بیشتر است !😐', 1, 'html')
           else
          function cb(a,b,c)
         local msgs = b.messages_
@@ -1236,17 +1236,17 @@ end
 	   bot.sendMessage(msg.chat_id_, msg.reply_to_message_id_, 1, "<code>>پیام مورد نظر شما پین شد.</code>", 1, 'html')
    end
 			 if text == 'bot' then
-          bot.sendMessage(msg.chat_id_, msg.id_, 1,'<b>BOT Online!</b>', 1, 'html')
+          bot.sendMessage(msg.chat_id_, msg.id_, 1,'<b>🔥spłÐΞЯ Online!🔥</b>', 1, 'html')
       end
         if text and text:match('whois (%d+)') then
               local id = text:match('whois (%d+)')
-            local text = 'برای مشاهده اطلاعات کاربر کلیک کنید.'
+            local text = '--{"👤 برای مشاهده کاربر کلیک کنید!","Click to view User 👤"}'
 			--{"👤 برای مشاهده کاربر کلیک کنید!","Click to view User 👤"}
             tdcli_function ({ID="SendMessage", chat_id_=msg.chat_id_, reply_to_message_id_=msg.id_, disable_notification_=0, from_background_=1, reply_markup_=nil, input_message_content_={ID="InputMessageText", text_=text, disable_web_page_preview_=1, clear_draft_=0, entities_={[0] = {ID="MessageEntityMentionName", offset_=0, length_=36, user_id_=id}}}}, dl_cb, nil)
               end
         if text == "whois" then
         function id_by_reply(extra, result, success)
-        bot.sendMessage(msg.chat_id_, msg.id_, 1, '<code>شناسه:</code> [<b>'..result.sender_user_id_..'</b>]\n<code>تعداد پیام های ارسالی:</code> [<b>'..(db:get(SUDO..'total:messages:'..msg.chat_id_..':'..result.sender_user_id_) or 0)..'</b>]', 1, 'html')
+        bot.sendMessage(msg.chat_id_, msg.id_, 1, '<code>شناسه▪️:</code> [<b>'..result.sender_user_id_..'</b>]\n<code>تعداد پیام های ارسالی▪️:</code> [<b>'..(db:get(SUDO..'total:messages:'..msg.chat_id_..':'..result.sender_user_id_) or 0)..'</b>]', 1, 'html')
         end
          if tonumber(msg.reply_to_message_id_) == 0 then
           else
@@ -1259,7 +1259,7 @@ end
       end
    -- member
    if text == 'ping' then
-          local a = {"<code>ربات فعال و آماده کار است.</code>","<code>ربات فعال است</code>","<b>pong!</b>"}
+          local a = {"<code>ربات فعال و آماده کار است.</code>","<code>🛡spłÐΞЯ Is Online :D 🛡 </code>","<b>🔥pong!..spłÐΞЯ..Is..Online :)🔥</b>"}
           bot.sendMessage(msg.chat_id_, msg.id_, 1,''..a[math.random(#a)]..'', 1, 'html')
       end
 	  db:incr("allmsg")
@@ -1296,7 +1296,7 @@ local msger = tonumber(((msgs / groupmsg) * 100))
 local msger = math.ceil(msger)
 local rank = function();local data = load_data(_config.chats.managed[msg.to.peer_id]);
 if data.rank and data.rank[uid] then return '\n*rank :* `'..data.rank[uid]..'`' else return '' end end
-local text = _('▪️user info : \n*user :* %s\n*▪️your msgs in group :* `[%s]%s%s`\n*▪️All group msgs :* `%s`'):format(username,math.ceil(msgs),'%',msger,groupmsg)..rank()
+ bot.sendMessage('▪️user info : \n*user :* %s\n*▪️your msgs in group :* `[%s]%s%s`\n*▪️All group msgs :* `%s`'):format(username,math.ceil(msgs),'%',msger,groupmsg)..rank()
 return get_pics(msg.from.id,sphoto,text)
 end
 end
