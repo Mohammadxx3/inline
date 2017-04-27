@@ -46,16 +46,23 @@ function is_bot(msg)
     end
   end
  ------------------------------------------------------------
-function sphoto(arg ,msgr)
-local count = msgr.total_count_
-if count < 1 then
-return td.sendText(tonumber(msg.to.id), 0, 1, 0, nil, arg:gsub('_', '\\%0'), 0, 'md', ok_cb, cmd)
-end
-local min = msgr.photos_
-local random_table = min[(math.random(count) - 1)]
-local pic_id = random_table.sizes_[0].photo_.persistent_id_
-td.sendPhoto(tonumber(msg.to.id), 0, 1, 1, nil, pic_id, arg:gsub('`', ''):gsub('%*', ''):gsub('\\' , ''), dl_cb, arg)
-
+function sendPhoto(chat_id, reply_to_message_id, disable_notification, from_background, reply_markup, photo, caption)
+  tdcli_function ({
+    ID = "SendMessage",
+    chat_id_ = chat_id,
+    reply_to_message_id_ = reply_to_message_id,
+    disable_notification_ = disable_notification,
+    from_background_ = from_background,
+    reply_markup_ = reply_markup,
+    input_message_content_ = {
+      ID = "InputMessagePhoto",
+      photo_ = getInputFile(photo),
+      added_sticker_file_ids_ = {},
+      width_ = 0,
+      height_ = 0,
+      caption_ = caption
+    },
+  }, dl_cb, nil)
 end
   ------------------------------------------------------------
 function is_owner(msg) 
@@ -1259,7 +1266,7 @@ end
       end
    -- member
    if text == 'ping' then
-          local a = {"<code>ربات فعال و آماده کار است.</code>","<code>🛡spłÐΞЯ Is Online :D 🛡 </code>","<b>🔥pong!..spłÐΞЯ..Is..Online :)🔥</b>"}
+          local a = {"<code>ربات فعال و آماده کار است.</code>","<code>🛡spłÐΞЯ Is Online :D 🛡 </code>","<b>🔥pong! spłÐΞЯ Is Online :)🔥</b>"}
           bot.sendMessage(msg.chat_id_, msg.id_, 1,''..a[math.random(#a)]..'', 1, 'html')
       end
 	  db:incr("allmsg")
@@ -1288,16 +1295,22 @@ end
       end
     if text and msg_type == 'text' and not is_muted(msg.chat_id_,msg.sender_user_id_) then
        if text == "me" then
-         username = get_uname(msg.from.id) or false
-local hash = 'msgs:'..msg.from.id..':'..msg.to.id
-msgs = tonumber(redis:get(hash)) or 0
-groupmsg = tonumber(redis:get('spgs:'..msg.to.id)) or 0
-local msger = tonumber(((msgs / groupmsg) * 100))
-local msger = math.ceil(msger)
-local rank = function();local data = load_data(_config.chats.managed[msg.to.peer_id]);
-if data.rank and data.rank[uid] then return '\n*rank :* `'..data.rank[uid]..'`' else return '' end end
- bot.sendMessage('▪️user info : \n*user :* %s\n*▪️your msgs in group :* `[%s]%s%s`\n*▪️All group msgs :* `%s`'):format(username,math.ceil(msgs),'%',msger,groupmsg)..rank()
-return get_pics(msg.from.id,sphoto,text)
+	local msgs = db:get(SUDO..'total:messages:'..msg.chat_id_..':'..msg.sender_user_id_)
+    local function getpro(extra, result, success)
+   if result.photos_[0] then
+            sendPhoto(msg.chat_id_, msg.sender_user_id_, 0, 1, nil, result.photos_[0].sizes_[1].photo_.persistent_id_,'▪️ایدی شما: '..msg.sender_user_id_..'\n▪️ایدی گروه: '..msg.chat_id_:gsub('-100','')..'\n▪️تعداد پیام های شما: '..msgs)
+      else
+     bot.sendMessage(msg.chat_id_, msg.id_, 1,'شما عکسی ندارید\n_▪️ایدی شما:_ '..msg.sender_user_id_..'\n_▪️ایدی گروه:_ '..msg.chat_id_:gsub('-100','')..'\n_▪️تعداد پیام های شما:_ '..msgs..' ', 1, 'md')
+   end
+   end
+    tdcli_function ({
+    ID = "GetUserProfilePhotos",
+    user_id_ = msg.sender_user_id_,
+    offset_ = 0,
+    limit_ = 1
+  }, getpro, nil)
+ end
+end
 end
 end
 end
