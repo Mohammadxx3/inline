@@ -9,7 +9,7 @@ db = redis.connect('127.0.0.1', 6379)
 BASE = '/home/inline/inline/'
 SUDO = 374734484--sudo id
 sudo_users = {374734484,346189693,Userid}
-BOTS = 00000000 --bot id
+BOTS = 355975105 --bot id
 bot_id = db:get(SUDO..'bot_id')
 function vardump(value)
   print(serpent.block(value, {comment=false}))
