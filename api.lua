@@ -189,7 +189,7 @@ local hash = SUDO..'settings:'..chat..':'..value
 						local chat = ('-'..q.data:match('(%d+)') or '')
 						if is_mod(chat,q.from.id) then
              if q.data:match('_') and not (q.data:match('next_page') or q.data:match('left_page')) then
-                Canswer(q.id,">برای مشاهده راهنمای بیشتر این بخش عبارت\n/help\nرا ارسال کنید\n>تیم پشتیبانی:[@LockerTeamBot]\n>کانال پشتیبانی:[@LockerTeam]\n> فروش :[@King_Dis_Love]",true)
+                Canswer(q.id,"◾️برای مشاهده راهنمای بیشتر این بخش عبارت\n/help\nرا ارسال کنید\n>تیم پشتیبانی:[@LockerTeamBot]\n>کانال پشتیبانی:[@LockerTeam]\n> فروش :[@King_Dis_Love]",true)
 					elseif q.data:match('lock') then
 							local lock = q.data:match('lock (.*)')
 				TIME_MAX = (redis:hget("flooding:settings:"..chat,"floodtime") or 3)
@@ -589,7 +589,7 @@ local hash = SUDO..'settings:'..chat..':'..value
                    {text = 'بازگشت به منوی اصلی ◀️', callback_data = 'firstmenu:'..chat},{text = 'صفحه قبلی ◀️', callback_data = 'groupinfo:'..chat}
 				}
 							}
-              edit(q.inline_message_id, '`لینک ورود به ابرگروه:`\n '..links..'',keyboard)
+              edit(q.inline_message_id, '`لینک ورود به ابرگروه◾️:`\n '..links..'',keyboard)
             end
 							------------------------------------------------------------------------
 							if q.data:match('banlist') then
@@ -773,7 +773,7 @@ local hash = SUDO..'settings:'..chat..':'..value
                    {text = 'بازگشت به منوی اصلی ◀️', callback_data = 'firstmenu:'..chat}
 				}
 							}
-              edit(q.inline_message_id,'`>قوانین گروه با موفقیت بازنشانی گردید.`',keyboard)
+              edit(q.inline_message_id,'`◾️قوانین گروه با موفقیت بازنشانی گردید.`',keyboard)
             end
 							------------------------------------------------------------------------
 							if q.data:match('as12310fklfkmgfvm') then
@@ -796,7 +796,7 @@ local hash = SUDO..'settings:'..chat..':'..value
                    {text = 'بازگشت به منوی اصلی ◀️', callback_data = 'firstmenu:'..chat},{text = 'صفحه قبلی ◀️', callback_data = 'linkgroup:'..chat}
 				}
 							}
-              edit(q.inline_message_id,'`>لینک ثبت شده با موفقیت بازنشانی گردید.`',keyboard)
+              edit(q.inline_message_id,'`◾️لینک ثبت شده با موفقیت بازنشانی گردید.`',keyboard)
             end
 							--########################################################################--
 								if q.data:match('removebanlist') then
@@ -821,7 +821,7 @@ local hash = SUDO..'settings:'..chat..':'..value
                    {text = 'بازگشت به منوی اصلی ◀️', callback_data = 'firstmenu:'..chat}
 				}
 							}
-              edit(q.inline_message_id,'`>لیست کاربران مسدود شده از گروه با موفقیت بازنشانی گردید.`',keyboard)
+              edit(q.inline_message_id,'`◾️لیست کاربران مسدود شده از گروه با موفقیت بازنشانی گردید.`',keyboard)
             end
 							------------------------------------------------------------------------
 							if q.data:match('sudfewbhwebr9983243') then
@@ -949,7 +949,7 @@ local hash = SUDO..'settings:'..chat..':'..value
                    {text = 'بازگشت به منوی اصلی ◀️', callback_data = 'firstmenu:'..chat},{text = 'صفحه قبلی ◀️', callback_data = 'salegroup:'..chat}
 				}
 							}
-              edit(q.inline_message_id,'`>سرویس انتخابی شما: [مدیریت پیشرفته گروه].`\n`از منوی زیر انتخاب کنید:`',keyboard)
+              edit(q.inline_message_id,'`◾️سرویس انتخابی شما: [مدیریت پیشرفته گروه].`\n`از منوی زیر انتخاب کنید:`',keyboard)
             end
 							------------------------------------------------------------------------
 							if q.data:match('herfeiimanage') then
@@ -962,7 +962,7 @@ local hash = SUDO..'settings:'..chat..':'..value
                    {text = 'بازگشت به منوی اصلی ◀️', callback_data = 'firstmenu:'..chat},{text = 'صفحه قبلی ◀️', callback_data = 'salegroup:'..chat}
 				}
 							}
-              edit(q.inline_message_id,'`>سرویس انتخابی شما: [مدیریت حرفه ای گروه].`\n`از منوی زیر انتخاب کنید:`',keyboard) 
+              edit(q.inline_message_id,'`◾️سرویس انتخابی شما: [مدیریت حرفه ای گروه].`\n`از منوی زیر انتخاب کنید:`',keyboard) 
             end
 							--********************************************************************--
 							if q.data:match('tarhpro') then
@@ -1119,7 +1119,7 @@ local function getsettings(value)
                    {text = 'بازگشت به منوی اصلی ◀️', callback_data = 'firstmenu:'..chat},{text = '▶️ صفحه بعدی', callback_data = 'next_page:'..chat}
                 }
 							}
-            edit(q.inline_message_id,'تنظیمات-ابرگروه(فیلترها):',keyboard)
+            edit(q.inline_message_id,'تنظیمات-ابرگروه(فیلترها)◾️:',keyboard)
             end
 			------------------------------------------------------------------------
             if q.data:match('left_page') then
